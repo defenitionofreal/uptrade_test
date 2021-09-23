@@ -1,0 +1,12 @@
+<ul>
+    {% for item in items %}
+    {% if item.is_active %}
+    <li>
+        <a href="?{{ other_querystring }}&{{ menu }}={{ item.id }}">{{ item.name }}</a>
+    </li>
+    {% if item.child_items %}
+    {% include 'tags/child_menu.html' with items=item.child_items %}
+    {% endif %}
+    {% endif %}
+    {% endfor %}
+</ul>
